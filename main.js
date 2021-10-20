@@ -20,28 +20,30 @@ if(navClose){
 }
 
 /*==================== REMOVE MENU MOBILE ====================*/
-const navLink = document.getElementById('.nav__link')
+const navLink = document.querySelectorAll('.nav__link')
+
 function linkAction(){
-  const navMenu = document.getElementById('nav-menu')
+    const navMenu = document.getElementById('nav-menu')
+    // When we click on each nav__link, we remove the show-menu class
     navMenu.classList.remove('show-menu')
 }
-navLink.forEach(n => n.addEventListener('click',linkAction))
+navLink.forEach(n => n.addEventListener('click', linkAction))
 
 
 /*==================== ACCORDION SKILLS ====================*/
-const skillContent = document.getElementsByClassName('skill__content'),
-     skillHeader = document.querySelectorAll('.skill_header')
+const skillsContent = document.getElementsByClassName('skills__content'),
+     skillsHeader = document.querySelectorAll('.skills__header')
 
 function toggleSkill(){
   let itemClass = this.parentNode.className
 
-  for(i=0;i < skillContent.length;i++){
-    skillContent[i].className = 'skill__content skill__close'
+  for(i=0;i < skillsContent.length;i++){
+    skillsContent[i].className = 'skills__content skills__close'
   }
-if(itemClass === 'skills__content skill__close'){
-  this.parentNode.className = 'skill__content skill__open'
+if(itemClass === 'skills__content skills__close'){
+  this.parentNode.className = 'skills__content skills__open'
 }
-skillHeader.forEach((el, i) => {
+skillsHeader.forEach((el) => {
   el.addEventListener('click',toggleSkill)
 });
 
@@ -50,16 +52,84 @@ skillHeader.forEach((el, i) => {
 
 /*==================== QUALIFICATION TABS ====================*/
 
+const tabs = document.querySelectorAll('[data-target]'),
+tabContents = document.querySelectorAll('[data-content]')
+
+tabs.forEach(tab => {
+  tab.addEventListener('click',() =>{
+    const target = document.querySelector(tab.dataset.target)
+
+    tabContents.forEach(tabContents => {
+      tabContent.classList.remove('qualification__active')
+    })
+    target.classList.add('qualification__active')
+
+    tab.forEach(tab => {
+      tab.classList.remove('qualification__active')
+    })
+    tab.classList.add('qualification__active')
+
+  })
+})
+
 
 /*==================== SERVICES MODAL ====================*/
+  const modalViews = document.querySelectorAll('.services__modal'),
+      modalBtns = document.querySelectorAll('.services__button'),
+      modalClose = document.querySelectorAll('.services__modal-close')
 
+  let modal = function(modalClick){
+    modalViews[modalClick].classList.add('active-modal')
+  }
+
+  modalBtns.forEach((modalBtn,i)=>{
+    modalBtn.addEventListener('click', () => {
+      modal(i)
+    })
+  })
+
+  modalClose.forEach((modalClose)=>{
+    modalClose.addEventListener('click',()=>{
+      modalViews.forEach((modalView) => {
+        modalViews.classList.remove('active-modal')
+      })
+    })
+  });
 
 /*==================== PORTFOLIO SWIPER  ====================*/
 
+let swiper = new swiper('.portfolio__container',{
+  cssMode:true,
+  loop:true,
 
+  navigation:{
+    nextE1:'.swiper-button-next',
+    prevE1:'.swiper-button-prev',
+  },
+  pagination: {
+    el:'.swiper-pagination',
+    clickable:true,
+  },
+
+});
 /*==================== TESTIMONIAL ====================*/
 
+let swiperTensimoial = new swiper('.tensimonial__container',{
+  cssMode:true,
+  loop:true,
+  grabCursor:true;
 
+  pagination: {
+    el:'.swiper-pagination',
+    clickable:true,
+    dynamicBullets: true,
+  },
+  breakpoints:{
+    568:{
+      slidesPerView: 2,
+    }
+  }
+});
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 const sections = document.querySelectorAll('section[id]')
 
