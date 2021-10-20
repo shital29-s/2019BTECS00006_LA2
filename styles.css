@@ -19,7 +19,7 @@
     --text-color-light: hsl(var(--hue-color),8%,65%);
     --input-color: hsl(var(--hue-color),70%,96%);
     --body-color: hsl(var(--hue-color),60%,99%);
-    --container-color:#fff ;
+    --container-color:#FFF ;
 
     /*========== Font and typography ==========*/
     --body-font: 'Poppins', sans-serif;
@@ -135,10 +135,11 @@ img{
 
 /*==================== REUSABLE CSS CLASSES ====================*/
 .section{
-  padding:2rem 0 4rem;
+  padding: 2rem 0 4rem;
 }
 .section__title{
   font-size: var(--h1-font-size);
+  
 }
 .section__subtitle{
   display: block;
@@ -493,13 +494,13 @@ img{
   width: 60%;
 }
 .skills__php{
-  width: 80%;
-}
-.skills__firebase{
   width: 90%;
 }
-.skills__node{
+.skills__firebase{
   width: 70%;
+}
+.skills__node{
+  width: 90%;
 }
 .skills__react{
   width: 85%;
@@ -645,7 +646,7 @@ img{
   padding: 0 1rem;
   z-index: var(--z-modal);
   opacity: 0; 
-   visibility: hidden;
+  visibility: hidden;
   transition: .3s;
 
 }
